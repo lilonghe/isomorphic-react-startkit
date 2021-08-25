@@ -4,8 +4,8 @@ import path from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter as Router, matchPath } from 'react-router-dom';
-import routes from '../src/routes';
 
+import routes from '../src/routes';
 import App from '../src/app';
 
 let fileTemplate;
@@ -21,14 +21,9 @@ function renderRoute(req, res) {
         return match;
     });
   
-    Promise.all(promises).then(data => {
-        const context = data.reduce((context, data) => Object.assign(context, data), {});
-
-        let renderPage = renderToString(<Router location={req.url} context={context}><App /></Router>)
+    Promise.all(promises).then(() => {
+        let renderPage = renderToString(<Router location={req.url}><App /></Router>)
         let pageContent = fileTemplate.replace('<div id="root"></div>', `<div id="root">${renderPage}</div>`);
-        if (context) {
-            pageContent = pageContent.replace('window.initData;', `window.initData=${JSON.stringify(context)}`);
-        }
         res.end(pageContent);
     });
 }

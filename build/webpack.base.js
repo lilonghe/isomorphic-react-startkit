@@ -46,6 +46,7 @@ const babelOptions = {
         "@babel/preset-react"
     ],
     plugins: [
+        "@babel/plugin-transform-runtime",
         devMode && 'react-refresh/babel'
     ].filter(Boolean),
 };
