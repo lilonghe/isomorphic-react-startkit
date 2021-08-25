@@ -3,7 +3,8 @@ import path from 'path';
 
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter as Router } from 'react-router-dom';
+import { StaticRouter as Router, matchPath } from 'react-router-dom';
+import routes from '../src/routes';
 
 import App from '../src/app';
 
@@ -13,9 +14,23 @@ fs.readFile(path.join(__dirname, '../dist', 'index.html'), 'utf8').then(value =>
 });
 
 function renderRoute(req, res) {
-    let renderPage = renderToString(<Router location={req.url}><App /></Router>)
-    let pageContent = fileTemplate.replace('<div id="root"></div>', `<div id="root">${renderPage}</div>`);
-    res.end(pageContent);
+    const promises = [];
+    routes.some(route => {
+        const match = matchPath(req.url, route);
+        if (match) promises.push(route.initData(match));
+        return match;
+    });
+  
+    Promise.all(promises).then(data => {
+        const context = data.reduce((context, data) => Object.assign(context, data), {});
+
+        let renderPage = renderToString(<Router location={req.url} context={context}><App /></Router>)
+        let pageContent = fileTemplate.replace('<div id="root"></div>', `<div id="root">${renderPage}</div>`);
+        if (context) {
+            pageContent = pageContent.replace('window.initData;', `window.initData=${JSON.stringify(context)}`);
+        }
+        res.end(pageContent);
+    });
 }
 
 module.exports = renderRoute;
