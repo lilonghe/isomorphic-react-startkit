@@ -6,7 +6,9 @@ import renderMiddleware from './renderMiddleware';
 
 const app = express();
 const buildPath = path.join(__dirname, '../', 'dist');
-app.use('/', express.static(buildPath));
+app.use(express.static(buildPath, {
+    index: false,
+}));
 app.get('*', renderMiddleware);
 
 app.set('port', process.env.PORT || 8080);
