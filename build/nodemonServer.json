@@ -1,0 +1,4 @@
+{
+    "watch": ["./server/*", "./src/*"],
+    "exec": "npm run server:build && node _app/app.js"
+ }

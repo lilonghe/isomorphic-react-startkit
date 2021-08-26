@@ -1,6 +1,6 @@
 {
   "name": "isomorphic-react-startkit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "lilonghe",
     "email": "lilonghe@outlook.com"
@@ -8,6 +8,7 @@
   "scripts": {
     "start": "nodemon --config build/nodemon.json",
     "build": "cross-env NODE_ENV=production webpack --config=build/webpack.pro.js",
+    "server:dev": "nodemon --config build/nodemonServer.json",
     "server:build": "cross-env NODE_ENV=production webpack --config=build/webpack.server.pro.js",
     "preserver:build": "npm run build",
     "lint": "lint-staged",
@@ -61,6 +62,7 @@
     "webpack": "5.45.1",
     "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^4.7.0",
+    "webpack-dev-middleware": "^5.0.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-node-externals": "^3.0.0"
   }
