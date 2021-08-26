@@ -10,7 +10,8 @@ Based on the isomorphic scaffolding provided by webpack5 for react.
 npm start
 
 // production
-npm run server
+npm run server:build
+node _app/app.js
 ```
 
 # Feature
@@ -23,3 +24,4 @@ npm run server
 2. `src/indexServer.js`
 3. `src/store/index.js` export `initStore` function.
 4. `src/routes.js` SSR route need implement `initData` function.
+5. `build` directory

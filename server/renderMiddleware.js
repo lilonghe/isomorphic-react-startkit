@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import config from '../build/config';
 
 import { matchPath } from 'react-router-dom';
 
@@ -9,7 +10,8 @@ import 'isomorphic-fetch';
 import { render } from '../src/indexServer';
 
 let fileTemplate;
-fs.readFile(path.join(__dirname, '../dist', 'index.html'), 'utf8').then(value => {
+
+fs.readFile(config.webpack.outputPath + '/index.html', 'utf8').then(value => {
     fileTemplate = value;
 });
 
@@ -37,4 +39,4 @@ function renderRoute(req, res) {
     });
 }
 
-module.exports = renderRoute;
+export default renderRoute;

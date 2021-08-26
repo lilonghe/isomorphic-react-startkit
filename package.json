@@ -6,10 +6,10 @@
     "email": "lilonghe@outlook.com"
   },
   "scripts": {
-    "server": "node ./server/index.js",
-    "predev": "npm run build",
     "start": "nodemon --config build/nodemon.json",
     "build": "cross-env NODE_ENV=production webpack --config=build/webpack.pro.js",
+    "server:build": "cross-env NODE_ENV=production webpack --config=build/webpack.server.pro.js",
+    "preserver:build": "npm run build",
     "lint": "lint-staged",
     "eslint": "eslint --fix --ext .jsx,.js src/"
   },
@@ -61,6 +61,7 @@
     "webpack": "5.45.1",
     "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-node-externals": "^3.0.0"
   }
 }

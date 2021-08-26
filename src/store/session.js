@@ -1,4 +1,4 @@
-import { fetchUserInfo } from '../services/session';
+import { fetchUserInfo } from '@services/session';
 
 export const session = {
     state: {

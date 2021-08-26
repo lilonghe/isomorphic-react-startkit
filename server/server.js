@@ -6,7 +6,7 @@ import config from '../build/config';
 import renderMiddleware from './renderMiddleware';
 
 const app = express();
-const buildPath = path.join(__dirname, '../', 'dist');
+const buildPath = config.webpack.outputPath;
 app.use(express.static(buildPath, {
     index: false,
 }));

@@ -1,4 +1,4 @@
-import { fetchMessageList } from '../services/session';
+import { fetchMessageList } from '@services/session';
 
 export const message = {
     state: {
