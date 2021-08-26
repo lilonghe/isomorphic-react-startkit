@@ -1,12 +1,25 @@
-# react-startkit
-基于 webpack5 为 react 提供的脚手架。
+# isomorphic-react-startkit
+基于 webpack5 为 react 提供的同构脚手架。  
+Based on the isomorphic scaffolding provided by webpack5 for react.
 
-## build
-build 目录下存放 webpack 配置文件，会逐渐把 webpack 配置抽离出来到 config.js 配置。
+> Powered by [react-startkit](https://github.com/lilonghe/react-startkit)
 
-# FAQ
-## Husky@4
-因为最新版 Husky 不支持把配置写在 package.json 里，所以使用了 v4 版本。
+# Introduction
+```
+// dev, will not start SSR server
+npm start
 
-# Tools
-- i18n - [react-intl](https://formatjs.io/docs/react-intl/)
+// production
+npm run server
+```
+
+# Feature
+1. Support `redux`
+2. SSR data sync to CSR
+3. Support `react-router`
+
+# Point
+1. `server` directory
+2. `src/indexServer.js`
+3. `src/store/index.js` export `initStore` function.
+4. `src/routes.js` SSR route need implement `initData` function.

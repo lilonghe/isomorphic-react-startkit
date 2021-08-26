@@ -2,6 +2,7 @@ import express from 'express';
 import http from 'http';
 import path from 'path';
 
+import config from '../build/config';
 import renderMiddleware from './renderMiddleware';
 
 const app = express();
@@ -11,7 +12,7 @@ app.use(express.static(buildPath, {
 }));
 app.get('*', renderMiddleware);
 
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || config.serverPort || 8080);
 
 http.createServer(app).listen(app.get('port'), () => {
     console.log(`server started at: http://localhost:${app.get('port')}/`);

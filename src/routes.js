@@ -1,17 +1,19 @@
 import HomePage from './routes/home';
 import AboutPage from './routes/about';
-import { dispatch } from './store';
 
 const routes = [
     {
         path: "/",
         exact: true,
         component: HomePage,
+        initData: (dispatch) => {
+            return dispatch.message.loadMessageList();
+        }
     }, 
     {
         path: "/about",
         component: AboutPage,
-        initData: () => {
+        initData: (dispatch) => {
             return dispatch.session.loadUserinfo();
         }
     }
