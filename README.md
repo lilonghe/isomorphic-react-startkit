@@ -25,3 +25,6 @@ node _app/app.js
 3. `src/store/index.js` export `initStore` function.
 4. `src/routes.js` SSR route need implement `initData` function.
 5. `build` directory
+
+# Tip
+If you nedd lazy load route, please replace `React.lazy` with `@loadable/component` and remove `Suspense` component. Or you can upgrade with `React 18`.
