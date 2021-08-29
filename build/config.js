@@ -7,6 +7,7 @@ const config  = {
         alias: {
             '@services': path.join(__dirname, '../src/services')
         },
+        publicPath: '/',
         outputPath: path.join(__dirname, '../dist'),
         serverOutputPath: path.join(__dirname, '../_app'),
         serverOutputMain: 'app.js',

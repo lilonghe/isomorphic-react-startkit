@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import styles from './about.less';
 
 export default function About() {
     const dispatch = useDispatch();
@@ -14,7 +15,7 @@ export default function About() {
     return (
         <div>
             <h1>About</h1>
-            <div>{userinfo?.name}</div>
+            <div className={styles.username}>{userinfo?.name}</div>
         </div>
     )
 }

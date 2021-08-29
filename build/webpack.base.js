@@ -60,7 +60,7 @@ module.exports = {
 		path: config.webpack.outputPath,
 		filename: '[contenthash].js',
         chunkFilename: '[contenthash].js',
-		publicPath: '/',
+		publicPath: config.webpack.publicPath,
         clean: true,
         pathinfo: false,
 	},

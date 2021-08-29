@@ -16,6 +16,11 @@ fs.readFile(config.webpack.outputPath + '/index.html', 'utf8').then(value => {
 });
 
 function renderRoute(req, res) {
+
+    globalThis.location = {
+        pathname: req.url,
+    }
+
     const store = initStore();
     const promises = [];
     routes.some(route => {
